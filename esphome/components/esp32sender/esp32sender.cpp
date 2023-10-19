@@ -1,4 +1,4 @@
-#include "component1.h"
+#include "esp32sender.h"
 
 CustomSensor::CustomSensor(UARTComponent *parent) : UARTDevice(parent) {}
 
