@@ -1,0 +1,5 @@
+name: esp32_sender
+dependencies: []
+includes:
+  - esp32_sender.h
+  - esp32_sender.cpp
