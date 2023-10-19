@@ -18,3 +18,4 @@ def to_code(config):
     yield cg.register_component(var, config)
     yield uart.register_uart_device(var, config[CONF_UART_ID])
     yield sensor.register_sensor(var, config)
+    cg.add(cg.global_ns.print("Custom sensor component loaded!"))
