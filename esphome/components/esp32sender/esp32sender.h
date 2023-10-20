@@ -1,15 +1,16 @@
 #pragma once
 
 #include "esphome/core/component.h"
+#include "esphome/components/uart.h"
 #include "esphome/components/sensor/sensor.h"
 #include "esphome/components/switch/switch.h"
 
 namespace esphome {
-namespace custom_sensor {
+namespace esp32sender_sensor {
 
-class CustomSensor : public sensor::Sensor, public Component, public UARTDevice {
+class ESP32SenderSensor : public sensor::Sensor, public Component, public UARTDevice {
  public:
-  CustomSensor(UARTComponent *parent);
+  ESP32SenderSensor(UARTComponent *parent);
   Sensor *voltage1_sensor = new Sensor();
   Sensor *current1_sensor = new Sensor();
   Sensor *power1_sensor = new Sensor();
@@ -27,10 +28,11 @@ class CustomSensor : public sensor::Sensor, public Component, public UARTDevice 
 };
 }
 
-namespace custom_switch {
-class CustomSwitch : public Component, public switch::Switch, public UARTDevice {
+namespace esp32sender_switch {
+  
+class ESP32SenderSwitch : public Component, public switch::Switch, public UARTDevice {
  public:
-  CustomSwitch(UARTComponent *parent);
+  ESP32SenderSwitch(UARTComponent *parent);
   Switch *relay1 = new Switch();
   Switch *relay2 = new Switch();
   Switch *relay3 = new Switch();

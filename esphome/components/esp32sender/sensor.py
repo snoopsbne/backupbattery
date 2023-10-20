@@ -5,11 +5,11 @@ from esphome.const import CONF_ID, CONF_UART_ID
 
 DEPENDENCIES = ['uart']
 
-custom_sensor_ns = cg.esphome_ns.namespace('custom_sensor')
-CustomSensor = custom_sensor_ns.class_('CustomSensor', sensor.Sensor, uart.UARTDevice)
+esp32sender_sensor_ns = cg.esphome_ns.namespace('esp32sender_sensor')
+ESP32SenderSensor = esp32sender_sensor_ns.class_('ESP32SenderSensor', sensor.Sensor, uart.UARTDevice)
 
 CONFIG_SCHEMA = sensor.sensor_schema().extend({
-    cv.GenerateID(): cv.declare_id(CustomSensor),
+    cv.GenerateID(): cv.declare_id(ESP32SenderSensor),
     cv.GenerateID(CONF_UART_ID): cv.use_id(uart.UARTComponent),
 }).extend(cv.COMPONENT_SCHEMA)
 
@@ -18,4 +18,4 @@ def to_code(config):
     yield cg.register_component(var, config)
     yield uart.register_uart_device(var, config[CONF_UART_ID])
     yield sensor.register_sensor(var, config)
-    cg.add(cg.global_ns.print("Custom sensor component loaded!"))
+    cg.add(cg.global_ns.print("esp32sender_sensor_ns component loaded!"))
