@@ -7,7 +7,7 @@
 namespace esphome {
 namespace custom_sensor {
 
-class CustomSensor : public Component, public UARTDevice {
+class CustomSensor : public sensor::Sensor, public Component, public UARTDevice {
  public:
   CustomSensor(UARTComponent *parent);
   Sensor *voltage1_sensor = new Sensor();
@@ -25,8 +25,10 @@ class CustomSensor : public Component, public UARTDevice {
 
   void loop() override;
 };
+}
 
-class CustomSwitch : public Component, public UARTDevice {
+namespace custom_switch {
+class CustomSwitch : public Component, public switch::Switch, public UARTDevice {
  public:
   CustomSwitch(UARTComponent *parent);
   Switch *relay1 = new Switch();
