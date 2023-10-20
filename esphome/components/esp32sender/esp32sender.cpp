@@ -2,12 +2,12 @@
 #include "esp32sender.h"
 
 namespace esphome {
-namespace custom_sensor {
+namespace esp32sender_sensor {
 
 
-CustomSensor::CustomSensor(UARTComponent *parent) : UARTDevice(parent) {}
+ESP32SenderSensor::ESP32SenderSensor(UARTComponent *parent) : UARTDevice(parent) {}
 
-void CustomSensor::loop() {
+void ESP32SenderSensor::loop() {
   while (available()) {
     if (read() == 0x7E) {
       byte id = read();
@@ -51,16 +51,16 @@ void CustomSensor::loop() {
   }
 
   if (ping_received && (millis() - last_ping_time > PING_TIMEOUT)) {
-    ESP_LOGW("CustomSensor", "No ping received from sender for more than 5 seconds.");
+    ESP_LOGW("ESP32Sender", "No ping received from sender for more than 5 seconds.");
     ping_received = false;
   }
 }
 }
-namespace custom_switch {
+namespace esp32sender_switch {
 
-CustomSwitch::CustomSwitch(UARTComponent *parent) : UARTDevice(parent) {}
+ESP32SenderSwitch::ESP32SenderSwitch(UARTComponent *parent) : UARTDevice(parent) {}
 
-void CustomSwitch::write_state(bool state) {
+void ESP32SenderSwitch::write_state(bool state) {
   byte relayNum = (byte)(this->relay1->state ? 0 : 1);
   write(0x7E);
   write(relayNum);
@@ -68,5 +68,5 @@ void CustomSwitch::write_state(bool state) {
   write(0x7F);
 }
 
-} //namespace empty_sensor
+} 
 } //namespace esphome
