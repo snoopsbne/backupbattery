@@ -9,6 +9,9 @@
 namespace esphome {
 namespace esp32sender_sensor {
 
+asdjka aslkdjklas dklasidjalskdjkasldjkd   ;
+
+
 class ESP32SenderSensor : public Component, public Sensor, public UARTDevice {
  public:
   ESP32SenderSensor(UARTComponent *parent);
