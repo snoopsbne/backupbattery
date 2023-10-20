@@ -37,5 +37,5 @@ class CustomSwitch : public Component, public UARTDevice {
   void write_state(bool state) override;
 };
 
-}
-}
+};
+};
