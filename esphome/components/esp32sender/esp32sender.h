@@ -1,5 +1,6 @@
 #pragma once
 
+#include "esphome.h"
 #include "esphome/core/component.h"
 #include "esphome/components/uart.h"
 #include "esphome/components/sensor/sensor.h"
@@ -8,7 +9,7 @@
 namespace esphome {
 namespace esp32sender_sensor {
 
-class ESP32SenderSensor : public sensor::Sensor, public Component, public UARTDevice {
+class ESP32SenderSensor : public Component, public Sensor, public UARTDevice {
  public:
   ESP32SenderSensor(UARTComponent *parent);
   Sensor *voltage1_sensor = new Sensor();
@@ -29,7 +30,7 @@ class ESP32SenderSensor : public sensor::Sensor, public Component, public UARTDe
 }
 
 namespace esp32sender_switch {
-  
+
 class ESP32SenderSwitch : public Component, public switch::Switch, public UARTDevice {
  public:
   ESP32SenderSwitch(UARTComponent *parent);
