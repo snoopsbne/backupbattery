@@ -1,5 +1,8 @@
 #include "esphome.h"
 
+namespace esphome {
+namespace custom_sensor {
+
 class CustomSensor : public Component, public UARTDevice {
  public:
   CustomSensor(UARTComponent *parent);
@@ -33,3 +36,6 @@ class CustomSwitch : public Component, public UARTDevice {
 
   void write_state(bool state) override;
 };
+
+}
+}
