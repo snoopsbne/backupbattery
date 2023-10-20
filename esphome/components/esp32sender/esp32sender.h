@@ -1,4 +1,8 @@
-#include "esphome.h"
+#pragma once
+
+#include "esphome/core/component.h"
+#include "esphome/components/sensor/sensor.h"
+#include "esphome/components/sensor/switch.h"
 
 namespace esphome {
 namespace custom_sensor {
@@ -37,5 +41,5 @@ class CustomSwitch : public Component, public UARTDevice {
   void write_state(bool state) override;
 };
 
-};
-};
+}
+}

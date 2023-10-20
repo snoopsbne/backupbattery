@@ -1,4 +1,9 @@
+#include "esphome/core/log.h"
 #include "esp32sender.h"
+
+namespace esphome {
+namespace custom_sensor {
+
 
 CustomSensor::CustomSensor(UARTComponent *parent) : UARTDevice(parent) {}
 
@@ -50,6 +55,8 @@ void CustomSensor::loop() {
     ping_received = false;
   }
 }
+}
+namespace custom_switch {
 
 CustomSwitch::CustomSwitch(UARTComponent *parent) : UARTDevice(parent) {}
 
@@ -60,3 +67,6 @@ void CustomSwitch::write_state(bool state) {
   write(state ? 1 : 0);
   write(0x7F);
 }
+
+} //namespace empty_sensor
+} //namespace esphome
